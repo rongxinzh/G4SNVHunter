@@ -1,0 +1,57 @@
+Package: G4SNVHunter
+Type: Package
+Title: Evaluating SNV-Induced Disruption of G-Quadruplex Structures
+Version: 0.99.0
+Authors@R: 
+    c(
+        person("Rongxin", "Zhang", email = "rongxinzhang@outlook.com", 
+        role = c("cre", "aut"),
+        comment = c(ORCID = "0000-0002-1643-1185"))
+    )
+Description: 
+    G-quadruplexes (G4s) are unique nucleic acid secondary structures 
+    predominantly found in guanine-rich regions and have been shown to be 
+    involved in various biological regulatory processes. G4SNVHunter is an R 
+    package designed to rapidly identify genomic sequences with G4-forming 
+    potential and accurately screen user-provided single nucleotide variants 
+    (also applicable to single nucleotide polymorphisms) that may destabilize 
+    these G4 structures. This enables users to select key variants for further 
+    experimental study, investigating how these mutations may influence 
+    biological functions, such as gene regulation, by altering G4 stability.
+Encoding: UTF-8
+LazyData: false
+Depends: R (>= 4.3.0)
+Imports:
+    Biostrings,
+    stats,
+    GenomicRanges,
+    IRanges,
+    Rcpp,
+    RcppRoll,
+    data.table,
+    GenomeInfoDb,
+    S4Vectors,
+    ggplot2,
+    cowplot,
+    progress,
+    ggseqlogo,
+    viridis,
+    ggpointdensity
+LinkingTo: Rcpp
+RoxygenNote: 7.3.2
+License: MIT + file LICENSE
+Suggests:
+    knitr,
+    BiocStyle,
+    rmarkdown,
+    BiocManager,
+    BSgenome.Hsapiens.UCSC.hg19,
+    DT,
+    rtracklayer,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+biocViews: Epigenetics, SNP
+News: NEWS.md
+URL: https://github.com/rongxinzh/G4SNVHunter
+BugReports: https://github.com/rongxinzh/G4SNVHunter/issues
+Config/testthat/edition: 3
