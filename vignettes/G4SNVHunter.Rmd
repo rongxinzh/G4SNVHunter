@@ -26,9 +26,9 @@ significantly enriched in functional regions like gene promoters
 [@huppert2007g] and telomeres [@phan2002human], and their regulatory roles are 
 closely linked to their structures rather than their sequences [@zhang2024g].
 
-Single nucleotide variants (SNVs) are a common form of genetic variation. 
-When occurring within G4 regions, they can destabilize G4 structures and, 
-in turn, disrupt their regulatory functions.
+Single nucleotide variants (SNVs) are a common type of genetic variation. If 
+such a variant occurs within a G4 region, it may affect the stability of that 
+G4 structure.
 
 `G4SNVHunter` is designed to evaluate the potential impact of SNVs on G4 
 stability, but it can also be used to assess single nucleotide polymorphisms 
@@ -39,17 +39,15 @@ the propensity of G4 structures within a specified window, effectively taking
 into account the influence of flanking sequences on G4 formation, not just the 
 G4 sequence itself. 
 
-`G4SNVHunter` allows users to quickly determine which G4 structures might be 
-affected by SNVs (or SNPs) using only reference sequence data (`DNAStringSet` 
-object) and the substitution information of the variants (`GRanges` object). 
-This package is particularly beneficial for researchers focusing on specific 
-SNVs, as it facilitates the assessment of the potential impact of these 
-variants on G4 structures and supports the selection of experimental targets 
-for subsequent causal analysis.
-
-By integrating complex functionalities into a straightforward function, 
-`G4SNVHunter` simplifies the analysis process, making it accessible even to 
-those with minimal prior experience in G4 research or basic programming skills.
+`G4SNVHunter` only requires users to provide genomic sequence data 
+(`DNAStringSet` object) and substitution information of variants 
+(`GRanges` object) to quickly determine which G4 structures may be affected by 
+SNVs (or SNPs). We simplify the analysis process by integrating complex 
+functionality into a simple function that can be used even by those 
+inexperienced in G4 research or basic programming skills. Users can 
+subsequently design *‘wet’* experiments based on the results of `G4SNVHunter` 
+to further explore the mechanisms by which variants affect biological 
+regulatory functions through their impact on G4 structures.
 
 # Installation
 
