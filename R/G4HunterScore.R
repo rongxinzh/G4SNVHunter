@@ -1,8 +1,7 @@
 #' Calculate the G4Hunter Score for a Given Sequence
 #'
 #' This function calculates the G4Hunter score for a given nucleotide sequence,
-#' which reflects the ability of the sequence to form a G4 structure
-#' (structure stability).
+#' which reflects the ability of that sequence to form a G4 structure.
 #'
 #' @param seq A single character string representing the nucleotide sequence.
 #' Must contain only the characters \code{A}, \code{T}, \code{C}, \code{G},

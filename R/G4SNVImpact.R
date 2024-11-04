@@ -1,9 +1,6 @@
 #' Evaluate the Impact of SNVs on G4 Sequences
 #'
-#' This function evaluates the impact of SNVs on G4 sequences.
-#' Specifically, it evaluates the changes in stability when SNVs (or SNPs) are
-#' introduced into these sequences. The stability evaluation is primarily based
-#' on the G4Hunter algorithm.
+#' This function evaluates the impact of SNVs on G4 formation.
 #'
 #' @param G4 A \code{GRanges} object representing the G4 regions. This object
 #' must include metadata columns for G4 sequence and G4Hunter scores.
@@ -297,7 +294,7 @@ SNVImpactG4 <- function(G4 = NULL,
 #' This function filters the SNV Impact \code{GRanges} object returned by the
 #' \code{SNVImpactG4} function based on user-defined thresholds for the
 #' \code{G4.info.score}, \code{mut.score}, and \code{score.diff} parameters.
-#' This function filters SNVs that may significantly impact the stability of G4
+#' This function filters SNVs that may significantly impact the formation of G4
 #' structures using customizable filtering criteria. You are not required to
 #' specify all three threshold parameters. However, at least one threshold
 #' parameter must be provided.
@@ -318,7 +315,7 @@ SNVImpactG4 <- function(G4 = NULL,
 #' \code{NULL}, this threshold is not applied.
 #'
 #' @seealso \code{\link{SNVImpactG4}} for assessing the impact of SNVs on
-#' G4 stability.
+#' G4 formation.
 #'
 #' @return A filtered \code{GRanges} object, containing only the records that
 #' meet the specified threshold criteria.

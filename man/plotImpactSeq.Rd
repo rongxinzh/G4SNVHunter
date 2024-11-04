@@ -48,6 +48,6 @@ plotImpactSeq(effect, ncol = 2)
 }
 \seealso{
 \code{\link{SNVImpactG4}} for evaluating the impact of SNVs on G4
-stability, and \code{\link{filterSNVImpact}} for filtering G4s that are
+formation, and \code{\link{filterSNVImpact}} for filtering G4s that are
 significantly affected by SNVs.
 }

@@ -4,6 +4,7 @@ author:
 - name: Rongxin Zhang
   affiliation:
     - State Key Laboratory of Digital Medical Engineering, Southeast University
+    - Laboratoire d’Optique et Biosciences (LOB), Ecole Polytechnique
   email: rongxinzhang@outlook.com
 package: G4SNVHunter
 date: "`r Sys.Date()`"
@@ -27,11 +28,11 @@ significantly enriched in functional regions like gene promoters
 closely linked to their structures rather than their sequences [@zhang2024g].
 
 Single nucleotide variants (SNVs) are a common type of genetic variation. If 
-such a variant occurs within a G4 region, it may affect the stability of that 
+such a variant occurs within a G4 region, it may affect the formation of that 
 G4 structure.
 
 `G4SNVHunter` is designed to evaluate the potential impact of SNVs on G4 
-stability, but it can also be used to assess single nucleotide polymorphisms 
+formation, but it can also be used to assess single nucleotide polymorphisms 
 (SNPs). This package leverages the highly effective G4 structure prediction 
 algorithm, G4Hunter [@bedrat2016re], which was conceptualized by Mergny et al. 
 [@bedrat2016re]. One of G4Hunter's notable advantages is that it will evaluate 
@@ -132,7 +133,7 @@ The genomic sequences refer to the sequence of the chromosome or fragment where
 your SNVs (or SNPs) are located. They can be complete chromosome sequences or 
 large fragments extracted from chromosomes.
 We will predict G4 structures from the sequences you provide and analyze 
-whether these SNVs can affect their stability.
+whether these SNVs can affect their formation.
 
 Please note that the coordinates of your SNVs must be relative to the genomic 
 sequence you provide, and they should be in `1-based` coordinates.
@@ -516,7 +517,7 @@ datatable(as.data.frame(snv_eff[528]), options = list(scrollX = TRUE))
 
 ## Filtering potentially affected G4 sequences
 
-Given that some SNVs may have minimal effects on G4 stability, we need to 
+Given that some SNVs may have minimal effects on G4 formation, we need to 
 filter out those SNVs that are worth investigating further for experimental 
 validation or additional analysis. In other words, identifying those variants 
 that have the potential to disrupt the G4 structures.
@@ -561,7 +562,7 @@ filtered_snv_eff <- filterSNVImpact(snv_eff,
 ```
 
 We can examine the filtered records to identify SNVs that have a substantial 
-impact on G4 stability.
+impact on G4 formation.
 
 ```{r view_SNV_significant_impact}
 
@@ -578,8 +579,8 @@ You can use the `plotSNVImpact` function we provide to visualize changes in
 G4Hunter scores. This function is suitable for both variant-centric and 
 sample-centric output data, as well as their filtered outputs.
 
-We can observe that the mutated G4s generally show a trend of decreased 
-stability.
+We can observe that mutated G4 structures generally exhibit a trend of 
+decreased formation potential.
 
 ```{r eff_plot, fig.height = 3, message = FALSE}
 
@@ -616,7 +617,7 @@ plotImpactSeq(top5_snv_eff, ncol = 2)
 # A coherent example
 
 Let's explore a coherent example to predict the potential impact of SNVs on G4 
-stability. 
+formation. 
 
 Suppose you already have the sequences saved as a `DNAStringset` object 
 (`chr21_seq`) and the SNVs saved as a `GRanges` object (`snv_gr`), then execute 

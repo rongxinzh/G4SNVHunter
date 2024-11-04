@@ -18,8 +18,7 @@ sequence.
 }
 \description{
 This function calculates the G4Hunter score for a given nucleotide sequence,
-which reflects the ability of the sequence to form a G4 structure
-(structure stability).
+which reflects the ability of that sequence to form a G4 structure.
 }
 \examples{
 

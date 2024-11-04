@@ -94,10 +94,7 @@ A \code{GRanges} object depending on the \code{mode} parameter:
 }
 }
 \description{
-This function evaluates the impact of SNVs on G4 sequences.
-Specifically, it evaluates the changes in stability when SNVs (or SNPs) are
-introduced into these sequences. The stability evaluation is primarily based
-on the G4Hunter algorithm.
+This function evaluates the impact of SNVs on G4 formation.
 }
 \examples{
 

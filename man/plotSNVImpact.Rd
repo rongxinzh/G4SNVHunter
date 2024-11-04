@@ -27,7 +27,7 @@ A combined plot (using \code{plot_grid}) containing two subplots:
 }
 \description{
 This function generates two plots for visualizing the impact of SNVs on
-G4 stability:
+G4 formation:
 1. A scatter plot with density shading comparing the original G4Hunter score
 and the mutant G4Hunter score.
 2. A density plot showing the distribution of score changes between the
@@ -65,6 +65,6 @@ plotSNVImpact(res_snp)
 }
 \seealso{
 \code{\link{SNVImpactG4}} for evaluating the impact of SNVs on G4
-stability, and \code{\link{filterSNVImpact}} for filtering G4s that are
+formation, and \code{\link{filterSNVImpact}} for filtering G4s that are
 significantly affected by SNVs.
 }

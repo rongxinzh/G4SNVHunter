@@ -30,7 +30,7 @@ Default is \code{TRUE}. Setting this parameter to \code{FALSE} can reduce
 the memory overhead of the final output, which may be useful for extremely
 large genomes. However, we strongly recommend retaining the sequence
 information in the output, as it is indispensable for subsequent analysis of
-the impact of variants on G4 stability.}
+the impact of variants on G4 formation.}
 
 \item{strands}{A character string (\code{"b"} for both strands and
 \code{"p"} for positive strand only) indicating which strand to be
