@@ -73,6 +73,8 @@ recommended parameters is:
 filtered_snv_eff <- filterSNVImpact(snv_eff, 
                                     raw_score_threshold = 1.5,
                                     mut_score_threshold = 1.2)
+
+print(filtered_snv_eff)
 ```
 
 Generally, G4 structures with an absolute G4Hunter score above 1.5 are 
