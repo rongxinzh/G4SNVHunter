@@ -5,6 +5,10 @@ identify single nucleotide variants (SNVs), including single nucleotide
 polymorphisms (SNPs), with the potential to disrupt the formation of
 G-quadruplex (G4) structures.
 
+**Please note that this is a development version. For the stable release, 
+please install the version from the [main](
+https://github.com/rongxinzh/G4SNVHunter/tree/main) branch.**
+
 # Installation
 
 You can install directly from GitHub using:
