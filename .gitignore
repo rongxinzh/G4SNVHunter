@@ -3,8 +3,6 @@
 .RData
 .Rproj.user
 .Ruserdata
-.Rbuildignore
-G4SNVHunter.Rproj
 src/*.o
 src/*.so
 src/*.dll
