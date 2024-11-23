@@ -1,7 +1,7 @@
 Package: G4SNVHunter
 Type: Package
 Title: Evaluating SNV-Induced Disruption of G-Quadruplex Structures
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: 
     c(
         person("Rongxin", "Zhang", email = "rongxinzhang@outlook.com", 
