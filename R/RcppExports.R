@@ -2,5 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 G4HTranslate <- function(sequence) {
-  .Call('_G4SNVHunter_G4HTranslate', PACKAGE = 'G4SNVHunter', sequence)
+    .Call('_G4SNVHunter_G4HTranslate', PACKAGE = 'G4SNVHunter', sequence)
 }
+
