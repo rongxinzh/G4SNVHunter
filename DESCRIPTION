@@ -15,9 +15,9 @@ Description:
     package designed to rapidly identify genomic sequences with G4-forming 
     potential and accurately screen user-provided single nucleotide variants 
     (also applicable to single nucleotide polymorphisms) that may destabilize 
-    these G4 structures. This enables users to select key variants for further 
-    experimental study, investigating how these mutations may influence 
-    biological functions, such as gene regulation, by altering G4 stability.
+    these G4 structures. This enables users to screen key variants for further 
+    experimental study, investigating how these variants may influence 
+    biological functions, such as gene regulation, by altering G4 formation.
 Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.3.0)
@@ -48,7 +48,8 @@ Suggests:
     BSgenome.Hsapiens.UCSC.hg19,
     DT,
     rtracklayer,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    RBGL
 VignetteBuilder: knitr
 biocViews: Epigenetics, SNP
 News: NEWS.md
