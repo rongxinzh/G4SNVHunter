@@ -1,8 +1,0 @@
-.DS_Store
-.Rhistory
-.RData
-.Rproj.user
-.Ruserdata
-src/*.o
-src/*.so
-src/*.dll
