@@ -34,43 +34,43 @@
 #'     For \code{mode = "s"}, the returned \code{GRanges} object includes the
 #'     following metadata columns:
 #'     \itemize{
-#'       \item{\code{seqnames}}{Identifiers for SNVs.}
-#'       \item{\code{ranges}}{Position of the SNVs.}
-#'       \item{\code{strand}}{Strand of the SNVs.}
-#'       \item{\code{SNV.info.*}}{Metadata columns related to each SNV.}
-#'       \item{\code{G4.info.*}}{Metadata columns from the original G4 object.}
-#'       \item{\code{mut.G4.seq}}{The mutated G4 sequence after applying the
-#'       SNV change.}
-#'       \item{\code{mut.G4.anno.seq}}{The mutated G4 sequence, with the
-#'       mutated bases annotated using square brackets.}
-#'       \item{\code{mut.score}}{The G4Hunter score of the mutated sequence.}
-#'       \item{\code{score.diff}}{The difference between the mutated G4Hunter
+#'       \item \code{seqnames} Identifiers for SNVs.
+#'       \item \code{ranges} Position of the SNVs.
+#'       \item \code{strand} Strand of the SNVs.
+#'       \item \code{SNV.info.*} Metadata columns related to each SNV.
+#'       \item \code{G4.info.*} Metadata columns from the original G4 object.
+#'       \item \code{mut.G4.seq} The mutated G4 sequence after applying the
+#'       SNV change.
+#'       \item \code{mut.G4.anno.seq} The mutated G4 sequence, with the
+#'       mutated bases annotated using square brackets.
+#'       \item \code{mut.score} The G4Hunter score of the mutated sequence.
+#'       \item \code{score.diff} The difference between the mutated G4Hunter
 #'       score and the original G4Hunter score.
 #'       The value is calculated as the absolute value of the mutated G4Hunter
-#'       score minus the absolute value of the original G4Hunter score.}
+#'       score minus the absolute value of the original G4Hunter score.
 #'     }
 #'   }
 #'   \item{Mode "m":}{
 #'     For \code{mode = "m"}, the returned \code{GRanges} object includes the
 #'     following metadata columns:
 #'     \itemize{
-#'       \item{\code{seqnames}}{Identifiers for G4 sequences.}
-#'       \item{\code{ranges}}{Position of the G4 sequences (start and end).}
-#'       \item{\code{strand}}{Strand of the G4 sequences.}
-#'       \item{\code{G4.info.*}}{Metadata columns from the original G4 object.}
-#'       \item{\code{snv.ids}}{Concatenated SNV IDs for all SNVs affecting the
-#'       G4 region.}
-#'       \item{\code{sample.ids}}{A semicolon-separated list of sample IDs
-#'       overlapping each G4 region.}
-#'       \item{\code{mut.G4.seq}}{The mutated G4 sequence after applying the
-#'       combined SNV changes.}
-#'       \item{\code{mut.G4.anno.seq}}{The mutated G4 sequence, with the
-#'       mutated bases annotated using square brackets.}
-#'       \item{\code{mut.score}}{The G4Hunter score of the mutated sequence.}
-#'       \item{\code{score.diff}}{The difference between the mutated G4Hunter
+#'       \item \code{seqnames} Identifiers for G4 sequences.
+#'       \item \code{ranges} Position of the G4 sequences (start and end).
+#'       \item \code{strand} Strand of the G4 sequences.
+#'       \item \code{G4.info.*} Metadata columns from the original G4 object.
+#'       \item \code{snv.ids} Concatenated SNV IDs for all SNVs affecting the
+#'       G4 region.
+#'       \item \code{sample.ids} A semicolon-separated list of sample IDs
+#'       overlapping each G4 region.
+#'       \item \code{mut.G4.seq} The mutated G4 sequence after applying the
+#'       combined SNV changes.
+#'       \item \code{mut.G4.anno.seq} The mutated G4 sequence, with the
+#'       mutated bases annotated using square brackets.
+#'       \item \code{mut.score} The G4Hunter score of the mutated sequence.
+#'       \item \code{score.diff} The difference between the mutated G4Hunter
 #'       score and the original G4Hunter score. This value is calculated as the
 #'       absolute value of the mutated G4Hunter score minus the absolute value
-#'       of the original G4Hunter score.}
+#'       of the original G4Hunter score.
 #'     }
 #'   }
 #' }
