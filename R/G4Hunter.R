@@ -39,7 +39,6 @@
 #'
 #' @import GenomicRanges
 #' @import IRanges
-#' @import Biostrings
 #' @import progress
 #' @importFrom GenomeInfoDb seqlevels
 #' @export
