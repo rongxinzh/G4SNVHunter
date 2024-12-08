@@ -15,7 +15,8 @@
 #'
 #' @importFrom data.table fread
 #' @importFrom stats setNames
-#' @import Biostrings GenomeInfoDb
+#' @importFrom Biostrings DNAStringSet readDNAStringSet
+#' @import GenomeInfoDb
 #' @export
 #'
 #' @examples
