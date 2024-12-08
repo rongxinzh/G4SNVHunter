@@ -3,8 +3,9 @@ title: "Introduction to G4SNVHunter"
 author:
 - name: Rongxin Zhang
   affiliation:
-    - State Key Laboratory of Digital Medical Engineering, Southeast University
-    - Laboratoire d’Optique et Biosciences (LOB), Ecole Polytechnique
+    - "State Key Laboratory of Digital Medical Engineering, 
+    Southeast University, China"
+    - "Laboratoire d’Optique et Biosciences (LOB), Ecole Polytechnique, France"
   email: rongxinzhang@outlook.com
 package: G4SNVHunter
 date: "`r Sys.Date()`"
@@ -16,6 +17,18 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
 ---
+
+<style>
+pre code {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+body {
+    margin-bottom: 35px;
+}
+</style>
 
 # Introduction
 
@@ -61,7 +74,7 @@ please ensure that your network connection is stable.
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-BiocManager::install("G4SNVHunter")
+BiocManager::install("G4SNVHunter", dependencies = TRUE)
 
 ```
 
@@ -73,32 +86,13 @@ library(G4SNVHunter)
 
 ``` 
 
-# Packages required for the tutorial
+# Load packages required for this tutorial
 
-During this tutorial, we might need to use a few additional packages. We 
-recommend installing them in advance to ensure the tutorial code runs smoothly.
+During this tutorial, we might need to use a few additional packages. 
+Since we specified `dependencies = TRUE` when installing `G4SNVHunter` package, 
+these additional packages have already been installed.
 
-```{r install_required_pkg, eval = FALSE}
-
-if (!requireNamespace("BSgenome.Hsapiens.UCSC.hg19", quietly = TRUE)) {
-    BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
-}
-
-if (!requireNamespace("GenomicRanges", quietly = TRUE)) {
-    BiocManager::install("GenomicRanges")
-}
-
-if (!requireNamespace("DT", quietly = TRUE)) {
-  install.packages("DT")
-}
-
-if (!requireNamespace("rtracklayer", quietly = TRUE)) {
-    BiocManager::install("rtracklayer")
-}
-
-``` 
-
-Then, load these packages.
+We can load them directly.
 
 ```{r load_required_pkg, message = FALSE, warning = FALSE}
 
@@ -391,6 +385,16 @@ plotG4Info(G4_detected)
 
 ```
 
+The left panels (`A`, `C`, `E`) show the overall distribution of the 
+`max_score` (absolute value), `score` (absolute value), and length of G4s, 
+respectively. The right panels (`B`, `D`, `F`) illustrate the distribution of 
+`max_score`, `score`, and length for G4 structures on both the positive and 
+negative strands. The scores for G4s are positive on the positive strand and 
+negative on the negative strand, resulting in a bimodal distribution of 
+`max_score` and `score`. Please note that the positive or negative score 
+reflects only the strand type of the G4, whereas the capability of the G4 
+structure to form is determined by the absolute value of the score.
+
 # Evaluate SNV effects
 
 We provide two modes in `SNVImpactG4` function for you to assess the potential 
@@ -528,17 +532,17 @@ filtering process.
 There are three threshold parameters for you to adjust: `raw_score_threshold`, 
 `mut_score_threshold`, and `score_diff_threshold`.
 
-If `raw_score_threshold` (a positive number) is specified, `filterSNVImpact` 
-will filter out records where the absolute value of the original G4Hunter score 
-is below this threshold.
+If `raw_score_threshold` (a positive number, but no more than 4) is specified, 
+`filterSNVImpact` will filter out records where the absolute value of the 
+original G4Hunter score is below this threshold.
 
-If `mut_score_threshold` (a positive number) is specified, `filterSNVImpact` 
-will retain records where the G4Hunter score of the mutated G4 sequences does 
-not exceed this threshold.
+If `mut_score_threshold` (a positive number, but no more than 4) is specified, 
+`filterSNVImpact` will retain records where the G4Hunter score of the mutated 
+G4 sequences does not exceed this threshold.
 
-If `score_diff_threshold` (a negative number) is specified, `filterSNVImpact` 
-will retain records where the decrease in the G4Hunter score after mutation 
-exceeds this threshold.
+If `score_diff_threshold` (a negative number, but no less than -4) is 
+specified, `filterSNVImpact` will retain records where the decrease in the 
+G4Hunter score after mutation exceeds this threshold.
 For example, if `score_diff_threshold = -0.2`, those records will be retained:
 \( \left| \text{G4HunterScore}_{\text{mut_seq}} \right| - \left| 
 \text{G4HunterScore}_{\text{raw_seq}} \right| \leq -0.2 \)
