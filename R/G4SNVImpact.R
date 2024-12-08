@@ -85,7 +85,7 @@
 #' @import GenomicRanges
 #' @importFrom S4Vectors queryHits subjectHits mcols
 #' @importFrom IRanges start
-#' @importFrom Biostrings DNAString DNAStringSet replaceAt
+#' @importFrom Biostrings DNAString DNAStringSet replaceAt BString
 #' @export
 #'
 #' @examples
@@ -301,16 +301,16 @@ SNVImpactG4 <- function(G4 = NULL,
 #'
 #' @param gr A \code{GRanges} object returned by the \code{SNVImpactG4}
 #' function.
-#' @param raw_score_threshold A numeric value used as the threshold for the
-#' absolute value of \code{G4.info.score}. G4s with an absolute G4Hunter score
-#' exceeding this threshold will be retained. If \code{NULL}, this threshold is
-#' not applied.
-#' @param mut_score_threshold A numeric value used as the threshold for the
-#' absolute value of \code{mut.score}. Mutated G4s with an absolute G4Hunter
-#' score below this threshold will be retained. If \code{NULL}, this threshold
-#' is not applied.
-#' @param score_diff_threshold A numeric value (should be negative) used as the
-#' threshold for \code{score.diff}. G4s with a decrease in G4Hunter score
+#' @param raw_score_threshold A positive numeric value no greater than 4 used
+#' as the threshold for the absolute value of \code{G4.info.score}. G4s with
+#' an absolute G4Hunter score exceeding this threshold will be retained.
+#' If \code{NULL}, this threshold is not applied.
+#' @param mut_score_threshold A positive numeric value no greater than 4 used
+#' as the threshold for the absolute value of \code{mut.score}. Mutated G4s
+#' with an absolute G4Hunter score below this threshold will be retained.
+#' If \code{NULL}, this threshold is not applied.
+#' @param score_diff_threshold A negative numeric value no less than -4 used as
+#' the threshold for \code{score.diff}. G4s with a decrease in G4Hunter score
 #' greater than this threshold after variation will be retained. If
 #' \code{NULL}, this threshold is not applied.
 #'
@@ -378,20 +378,29 @@ filterSNVImpact <- function(gr,
   }
 
   if (!is.null(raw_score_threshold) &&
-      (!is.numeric(raw_score_threshold) || raw_score_threshold < 0)) {
-    stop("'raw_score_threshold' must be a positive numeric value.")
+      (!is.numeric(raw_score_threshold) ||
+       raw_score_threshold < 0 ||
+       raw_score_threshold > 4)) {
+    stop("'raw_score_threshold' must be a positive numeric value ",
+         "no greater than 4.")
   }
 
   if (!is.null(mut_score_threshold) &&
-      (!is.numeric(mut_score_threshold) || mut_score_threshold < 0)) {
-    stop("'mut_score_threshold' must be a positive numeric value.")
+      (!is.numeric(mut_score_threshold) ||
+       mut_score_threshold < 0 ||
+       mut_score_threshold > 4)) {
+    stop("'mut_score_threshold' must be a positive numeric value ",
+         "no greater than 4.")
   }
 
   if (!is.null(score_diff_threshold) &&
-      (!is.numeric(score_diff_threshold) || score_diff_threshold >= 0)) {
-    stop("'score_diff_threshold' must be a negative numeric value.")
+      (!is.numeric(score_diff_threshold) ||
+       score_diff_threshold >= 0 ||
+       score_diff_threshold < -4)) {
+    stop("'score_diff_threshold' must be a negative numeric value ",
+         "no less than -4.")
   }
-
+  
   if (!is.null(raw_score_threshold)) {
     gr <- gr[abs(gr$G4.info.score) >= raw_score_threshold]
   }
