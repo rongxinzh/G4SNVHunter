@@ -395,6 +395,16 @@ plotG4Info(G4_detected)
 
 ```
 
+The left panels (`A`, `C`, `E`) show the overall distribution of the 
+`max_score` (absolute value), `score` (absolute value), and length of G4s, 
+respectively. The right panels (`B`, `D`, `F`) illustrate the distribution of 
+`max_score`, `score`, and length for G4 structures on both the positive and 
+negative strands. The scores for G4s on the positive strand are positive, 
+while those on the negative strand are negative, resulting in a bimodal 
+distribution of `max_score` and `score`. Please note that the positive or 
+negative score reflects only the strand type of the G4, whereas the capability 
+of the G4 structure to form is determined by the absolute value of the score.
+
 # Evaluate SNV effects
 
 We provide two modes in `SNVImpactG4` function for you to assess the potential 
@@ -532,17 +542,17 @@ filtering process.
 There are three threshold parameters for you to adjust: `raw_score_threshold`, 
 `mut_score_threshold`, and `score_diff_threshold`.
 
-If `raw_score_threshold` (a positive number) is specified, `filterSNVImpact` 
-will filter out records where the absolute value of the original G4Hunter score 
-is below this threshold.
+If `raw_score_threshold` (a positive number, but no more that 4) is specified, 
+`filterSNVImpact` will filter out records where the absolute value of the 
+original G4Hunter score is below this threshold.
 
-If `mut_score_threshold` (a positive number) is specified, `filterSNVImpact` 
-will retain records where the G4Hunter score of the mutated G4 sequences does 
-not exceed this threshold.
+If `mut_score_threshold` (a positive number, but no more that 4) is specified, 
+`filterSNVImpact` will retain records where the G4Hunter score of the mutated 
+G4 sequences does not exceed this threshold.
 
-If `score_diff_threshold` (a negative number) is specified, `filterSNVImpact` 
-will retain records where the decrease in the G4Hunter score after mutation 
-exceeds this threshold.
+If `score_diff_threshold` (a negative number, but no less than -4) is 
+specified, `filterSNVImpact` will retain records where the decrease in the 
+G4Hunter score after mutation exceeds this threshold.
 For example, if `score_diff_threshold = -0.2`, those records will be retained:
 \( \left| \text{G4HunterScore}_{\text{mut_seq}} \right| - \left| 
 \text{G4HunterScore}_{\text{raw_seq}} \right| \leq -0.2 \)

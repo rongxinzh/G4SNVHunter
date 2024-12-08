@@ -15,18 +15,18 @@ filterSNVImpact(
 \item{gr}{A \code{GRanges} object returned by the \code{SNVImpactG4}
 function.}
 
-\item{raw_score_threshold}{A numeric value used as the threshold for the
-absolute value of \code{G4.info.score}. G4s with an absolute G4Hunter score
-exceeding this threshold will be retained. If \code{NULL}, this threshold is
-not applied.}
+\item{raw_score_threshold}{A positive numeric value no greater than 4 used
+as the threshold for the absolute value of \code{G4.info.score}. G4s with
+an absolute G4Hunter score exceeding this threshold will be retained.
+If \code{NULL}, this threshold is not applied.}
 
-\item{mut_score_threshold}{A numeric value used as the threshold for the
-absolute value of \code{mut.score}. Mutated G4s with an absolute G4Hunter
-score below this threshold will be retained. If \code{NULL}, this threshold
-is not applied.}
+\item{mut_score_threshold}{A positive numeric value no greater than 4 used
+as the threshold for the absolute value of \code{mut.score}. Mutated G4s
+with an absolute G4Hunter score below this threshold will be retained.
+If \code{NULL}, this threshold is not applied.}
 
-\item{score_diff_threshold}{A numeric value (should be negative) used as the
-threshold for \code{score.diff}. G4s with a decrease in G4Hunter score
+\item{score_diff_threshold}{A negative numeric value no less than -4 used as
+the threshold for \code{score.diff}. G4s with a decrease in G4Hunter score
 greater than this threshold after variation will be retained. If
 \code{NULL}, this threshold is not applied.}
 }

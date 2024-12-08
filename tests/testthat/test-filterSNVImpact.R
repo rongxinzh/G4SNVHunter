@@ -21,24 +21,45 @@ test_that("test filterSNVImpact with empty input", {
 
 test_that("test filterSNVImpact with all thresholds are NULL", {
   expect_error(filterSNVImpact(res_snv),
-               paste0("Error: All thresholds \\('raw_score_threshold', ",
+               paste0("All thresholds \\('raw_score_threshold', ",
                       "'mut_score_threshold', and 'score_diff_threshold'\\) ",
                       "are NULL. Please provide at least one."))
 })
 
 test_that("test filterSNVImpact with a negative raw_score_threshold", {
   expect_error(filterSNVImpact(res_snv, raw_score_threshold = -1),
-               "'raw_score_threshold' must be a positive numeric value.")
+               paste0("'raw_score_threshold' must be a positive numeric value ",
+                      "no greater than 4."))
+})
+
+test_that("test filterSNVImpact with a raw_score_threshold greater than 4", {
+  expect_error(filterSNVImpact(res_snv, raw_score_threshold = 4.2),
+               paste0("'raw_score_threshold' must be a positive numeric value ",
+                      "no greater than 4."))
 })
 
 test_that("test filterSNVImpact with a negative mut_score_threshold", {
   expect_error(filterSNVImpact(res_snv, mut_score_threshold = -1),
-               "'mut_score_threshold' must be a positive numeric value.")
+               paste0("'mut_score_threshold' must be a positive numeric value ",
+                      "no greater than 4."))
+})
+
+test_that("test filterSNVImpact with a mut_score_threshold greater than 4", {
+  expect_error(filterSNVImpact(res_snv, mut_score_threshold = 4.8),
+               paste0("'mut_score_threshold' must be a positive numeric value ",
+                      "no greater than 4."))
 })
 
 test_that("test filterSNVImpact with a positive score_diff_threshold", {
   expect_error(filterSNVImpact(res_snv, score_diff_threshold = 0.2),
-               "'score_diff_threshold' must be a negative numeric value.")
+               paste0("'score_diff_threshold' must be a negative numeric value ",
+                      "no less than -4."))
+})
+
+test_that("test filterSNVImpact with a score_diff_threshold less than -4", {
+  expect_error(filterSNVImpact(res_snv, score_diff_threshold = -4.2),
+               paste0("'score_diff_threshold' must be a negative numeric value ",
+                      "no less than -4."))
 })
 
 test_that("test filterSNVImpact with a defined raw_score_threshold", {

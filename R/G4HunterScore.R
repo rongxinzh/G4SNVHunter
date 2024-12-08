@@ -14,7 +14,6 @@
 #' @seealso \code{\link{G4HunterDetect}} for detecting the G4 sequences in a
 #' given \code{DNAStringSet} object.
 #'
-#' @import Biostrings
 #' @export
 #'
 #' @examples
