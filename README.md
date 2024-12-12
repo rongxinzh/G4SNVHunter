@@ -5,23 +5,60 @@ identify single nucleotide variants (SNVs), including single nucleotide
 polymorphisms (SNPs), with the potential to disrupt the formation of
 G-quadruplex (G4) structures.
 
-**Please note that this is a development version. For the stable release, 
-please install the version from the [main](
-https://github.com/rongxinzh/G4SNVHunter/tree/main) branch.**
+**Please note that this is a development version. For the stable release, please install the version from the main branch.**
 
 # Installation
+### Option 1: Install from GitHub
 
-You can install directly from GitHub using:
+You can install the package directly from GitHub,
 ```r
 # install.packages("devtools")
 devtools::install_github("rongxinzh/G4SNVHunter")
 ```
 
-Please note that your R version needs to be &#8805; 4.3.
+To run the sample code in our [vignette](
+https://bioconductor.org/packages/devel/bioc/vignettes/G4SNVHunter/inst/doc/G4SNVHunter.html
+), set the `dependencies` parameter to `TRUE`,
+```r
+# install.packages("devtools")
+devtools::install_github("rongxinzh/G4SNVHunter", dependencies = TRUE)
+```
 
-If your operating system is Windows, you will need to install 
-[Rtools](https://ohdsi.github.io/Hades/rSetup.html#Installing_RTools) on your 
-system first.
+**NOTE**
+
+* Your R version must be &#8805; 4.3.
+* If you are using Windows, please install 
+[Rtools](https://ohdsi.github.io/Hades/rSetup.html#Installing_RTools) 
+before proceeding.
+
+### Option 2: Install from Bioconductor
+
+The package is also available on Bioconductor as a development (devel) version. 
+To install it, follow these steps,
+```r
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(version = 'devel')
+
+BiocManager::install("G4SNVHunter")
+```
+
+If you want to run the sample code in our [vignette](
+https://bioconductor.org/packages/devel/bioc/vignettes/G4SNVHunter/inst/doc/G4SNVHunter.html
+), 
+set `dependencies` to `TRUE`,
+
+```r
+BiocManager::install("G4SNVHunter", dependencies = TRUE)
+```
+
+**NOTE**
+
+* The Bioconductor installation (`version = 'devel'`) requires the latest 
+version of R.
+* Make sure to initialize Bioconductor devel using 
+`BiocManager::install(version = 'devel')` before installing the package.
 
 # Quick Start
 
@@ -89,7 +126,7 @@ less likely to form stable structures.
 # Vignette
 
 For full use of our package, please refer to our [vignette](
-https://rongxinzh.github.io/G4SNVHunter/G4SNVHunter.html)
+https://bioconductor.org/packages/devel/bioc/vignettes/G4SNVHunter/inst/doc/G4SNVHunter.html)
 (highly recommended). 
 
 # Bug Reports

@@ -11,3 +11,7 @@ CHANGES IN VERSION 0.99.1
 CHANGES IN VERSION 0.99.2
 --------------
 - Minor revisions were made based on Bioconductor reviewers' feedback.
+
+CHANGES IN VERSION 0.99.3
+--------------
+- Minor updates

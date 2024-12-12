@@ -2,26 +2,33 @@
 title: "Introduction to G4SNVHunter"
 author:
 - name: Rongxin Zhang
-  affiliation: |
-    State Key Laboratory of Digital Medical Engineering, Southeast University  
-    Laboratoire d’Optique et Biosciences (LOB), Ecole Polytechnique
+  affiliation:
+    - "State Key Laboratory of Digital Medical Engineering, 
+    Southeast University, China"
+    - "Laboratoire d’Optique et Biosciences (LOB), Ecole Polytechnique, France"
   email: rongxinzhang@outlook.com
 package: G4SNVHunter
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_document:
-    theme: cerulean
-    mathjax: default
-    toc: yes
-    toc_float:
-      collapsed: true
-      smooth_scroll: true
+  BiocStyle::html_document
 bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Introduction to G4SNVHunter}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
 ---
+
+<style>
+pre code {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+body {
+    margin-bottom: 35px;
+}
+</style>
 
 # Introduction
 
@@ -64,8 +71,16 @@ please ensure that your network connection is stable.
 
 ```{r install_G4SNVHunter, eval = FALSE}
 
-# Currently can only be installed by Github
-devtools::install_github("rongxinzh/G4SNVHunter")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# Currently, G4SNVHunter depends on the devel version of Bioconductor.
+# Note: Bioconductor devel requires the latest R version (4.5 or higher).
+# Or, you can install G4SNVHunter from GitHub instead.
+BiocManager::install(version='devel')
+
+# Install the G4SNVHunter package and its dependencies for this tutorial.
+BiocManager::install("G4SNVHunter", dependencies = TRUE)
 
 ```
 
@@ -77,32 +92,13 @@ library(G4SNVHunter)
 
 ``` 
 
-# Packages required for the tutorial
+# Load packages required for this tutorial
 
-During this tutorial, we might need to use a few additional packages. We 
-recommend installing them in advance to ensure the tutorial code runs smoothly.
+During this tutorial, we might need to use a few additional packages. 
+Since we specified `dependencies = TRUE` when installing `G4SNVHunter` package, 
+these additional packages have already been installed.
 
-```{r install_required_pkg, eval = FALSE}
-
-if (!requireNamespace("BSgenome.Hsapiens.UCSC.hg19", quietly = TRUE)) {
-    BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
-}
-
-if (!requireNamespace("GenomicRanges", quietly = TRUE)) {
-    BiocManager::install("GenomicRanges")
-}
-
-if (!requireNamespace("DT", quietly = TRUE)) {
-  install.packages("DT")
-}
-
-if (!requireNamespace("rtracklayer", quietly = TRUE)) {
-    BiocManager::install("rtracklayer")
-}
-
-``` 
-
-Then, load these packages.
+We can load them directly.
 
 ```{r load_required_pkg, message = FALSE, warning = FALSE}
 
@@ -399,11 +395,11 @@ The left panels (`A`, `C`, `E`) show the overall distribution of the
 `max_score` (absolute value), `score` (absolute value), and length of G4s, 
 respectively. The right panels (`B`, `D`, `F`) illustrate the distribution of 
 `max_score`, `score`, and length for G4 structures on both the positive and 
-negative strands. The scores for G4s on the positive strand are positive, 
-while those on the negative strand are negative, resulting in a bimodal 
-distribution of `max_score` and `score`. Please note that the positive or 
-negative score reflects only the strand type of the G4, whereas the capability 
-of the G4 structure to form is determined by the absolute value of the score.
+negative strands. The scores for G4s on the positive strand are positive, while 
+those on the negative strand are negative, resulting in a bimodal distribution 
+of `max_score` and `score`. Please note that the positive or negative score 
+reflects only the type of strand the G4 is on, whereas the capability of the G4 
+structure to form is determined by the absolute value of the score.
 
 # Evaluate SNV effects
 
@@ -542,11 +538,11 @@ filtering process.
 There are three threshold parameters for you to adjust: `raw_score_threshold`, 
 `mut_score_threshold`, and `score_diff_threshold`.
 
-If `raw_score_threshold` (a positive number, but no more that 4) is specified, 
+If `raw_score_threshold` (a positive number, but no more than 4) is specified, 
 `filterSNVImpact` will filter out records where the absolute value of the 
 original G4Hunter score is below this threshold.
 
-If `mut_score_threshold` (a positive number, but no more that 4) is specified, 
+If `mut_score_threshold` (a positive number, but no more than 4) is specified, 
 `filterSNVImpact` will retain records where the G4Hunter score of the mutated 
 G4 sequences does not exceed this threshold.
 
