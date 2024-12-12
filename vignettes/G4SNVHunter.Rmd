@@ -74,6 +74,12 @@ please ensure that your network connection is stable.
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
+# Currently, G4SNVHunter depends on the devel version of Bioconductor.
+# Note: Bioconductor devel requires the latest R version (4.5 or higher).
+# Or, you can install G4SNVHunter from GitHub instead.
+BiocManager::install(version='devel')
+
+# Install the G4SNVHunter package and its dependencies for this tutorial.
 BiocManager::install("G4SNVHunter", dependencies = TRUE)
 
 ```
@@ -389,10 +395,10 @@ The left panels (`A`, `C`, `E`) show the overall distribution of the
 `max_score` (absolute value), `score` (absolute value), and length of G4s, 
 respectively. The right panels (`B`, `D`, `F`) illustrate the distribution of 
 `max_score`, `score`, and length for G4 structures on both the positive and 
-negative strands. The scores for G4s are positive on the positive strand and 
-negative on the negative strand, resulting in a bimodal distribution of 
-`max_score` and `score`. Please note that the positive or negative score 
-reflects only the strand type of the G4, whereas the capability of the G4 
+negative strands. The scores for G4s on the positive strand are positive, while 
+those on the negative strand are negative, resulting in a bimodal distribution 
+of `max_score` and `score`. Please note that the positive or negative score 
+reflects only the type of strand the G4 is on, whereas the capability of the G4 
 structure to form is determined by the absolute value of the score.
 
 # Evaluate SNV effects
