@@ -1,10 +1,10 @@
 Package: G4SNVHunter
 Type: Package
 Title: Evaluating SNV-Induced Disruption of G-Quadruplex Structures
-Version: 0.99.3
+Version: 0.99.4
 Authors@R: person("Rongxin", "Zhang", email = "rongxinzhang@outlook.com", 
            role = c("cre", "aut"),
-           comment = c(ORCID = "0000-0002-1643-1185"))
+           comment = c('ORCID' = "0000-0002-1643-1185"))
 Description: 
     G-quadruplexes (G4s) are unique nucleic acid secondary structures 
     predominantly found in guanine-rich regions and have been shown to be 
@@ -12,7 +12,7 @@ Description:
     package designed to rapidly identify genomic sequences with G4-forming 
     potential and accurately screen user-provided single nucleotide variants 
     (also applicable to single nucleotide polymorphisms) that may destabilize 
-    these G4 structures. This enables users to screen key variants for further 
+    these structures. This enables users to screen key variants for further 
     experimental study, investigating how these variants may influence 
     biological functions, such as gene regulation, by altering G4 formation.
 Encoding: UTF-8
