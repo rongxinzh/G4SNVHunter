@@ -20,8 +20,15 @@ CHANGES IN VERSION 0.99.4
 --------------
 - Minor updates
 
+CHANGES IN VERSION 1.0.0
+--------------
+- Bioconductor auto-bumped release version without code changes.
 
 CHANGES IN VERSION 1.1.0
+--------------
+- Bioconductor auto-bumped devel version to 1.1.0 without code changes.
+
+CHANGES IN VERSION 1.2.0
 ------------------------
 
 - Deprecated functions (still supported but scheduled for removal in a future release): 
