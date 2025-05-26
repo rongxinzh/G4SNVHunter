@@ -1,0 +1,19 @@
+[
+    {
+        "file": "/Users/rongxin/Library/CloudStorage/OneDrive-Personal/Research Project/Ongoing/G4SNVHunterPkg/G4SNVHunter/src/G4HTranslate.cpp",
+        "file_last_write": 1722597896.0,
+        "definitions": [
+            {
+                "usr": "c:@F@G4HTranslate#$@N@std@N@__1@S@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@S@allocator>#C#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "G4HTranslate(std::string)",
+                "file": "/Users/rongxin/Library/CloudStorage/OneDrive-Personal/Research Project/Ongoing/G4SNVHunterPkg/G4SNVHunter/src/G4HTranslate.cpp",
+                "line": 5,
+                "column": 15,
+                "hidden": false
+            }
+        ],
+        "hidden": false
+    }
+]
