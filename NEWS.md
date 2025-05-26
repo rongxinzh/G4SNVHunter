@@ -28,7 +28,7 @@ CHANGES IN VERSION 1.1.0
 --------------
 - Bioconductor auto-bumped devel version to 1.1.0 without code changes.
 
-CHANGES IN VERSION 1.2.0
+CHANGES IN VERSION 1.1.1
 ------------------------
 
 - Deprecated functions (still supported but scheduled for removal in a future release): 
@@ -52,3 +52,7 @@ CHANGES IN VERSION 1.2.0
   * loadVariant()
   * plotVarImpact()
   * plotImpactedG4()
+  
+CHANGES IN VERSION 1.1.2
+------------------------
+- Tweaked the vignette

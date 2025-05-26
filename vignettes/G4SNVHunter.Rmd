@@ -14,5 +14,5 @@ vignette: >
 <img src="images/logo.png" width="230" border="0"/>
 
 ```{r, echo=FALSE, results='asis'}
-cat("### Please refer to the full documentation at :👉 [this link](https://rongxinzh.github.io/G4SNVHunter/G4SNVHunter.html)")
+cat("### Please refer to the full documentation at :👉 [this link](https://rongxinzh.github.io/G4SNVHunter/G4SNVHunter.html) 👈  :)")
 ```
