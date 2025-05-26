@@ -270,10 +270,13 @@ G4HunterAnalysis <- function(sequence, chr, threshold = 1.5, window_size = 25,
   }
 }
 
-#' validateG4HunterParams
+#' validateG4HunterDetectInputs
 #'
-#' This function validates the parameters for the G4Hunter analysis.
 #'
+#' This function validates the inputs for the G4Hunter analysis.
+#'
+#' @param sequences A \code{DNAStringSet} object containing the input sequences
+#' to be analyzed.
 #' @param threshold A numeric value specifying the threshold for the G4Hunter
 #' score (absolute value). Default is 1.5.
 #' @param window_size An integer specifying the window size for G4Hunter
@@ -284,11 +287,20 @@ G4HunterAnalysis <- function(sequence, chr, threshold = 1.5, window_size = 25,
 #' @param strands A character string (\code{"b"} for both strands and
 #' \code{"p"} for positive strand only) indicating which strand to consider.
 #' Default is \code{"b"}.
-#' @return A logical value, \code{TRUE},
-#' indicating that the parameters are valid.
+#'
+#' @return NULL
+#'
 #' @noRd
-validateG4HunterParams <- function(threshold, window_size,
-                                   include_sequences, strands) {
+validateG4HunterDetectInputs <- function(sequences,
+                                         threshold,
+                                         window_size,
+                                         include_sequences,
+                                         strands) {
+
+  if (!inherits(sequences, "DNAStringSet")) {
+    stop("'sequences' must be a DNAStringSet object.")
+  }
+
   if (!is.numeric(threshold) || length(threshold) != 1) {
     stop("'threshold' must be a single numeric value.")
   }
@@ -313,5 +325,4 @@ validateG4HunterParams <- function(threshold, window_size,
     stop("'strands' should be 'b' or 'p', but got '", strands, "' instead.")
   }
 
-  return(TRUE)
 }

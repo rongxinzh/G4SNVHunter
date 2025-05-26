@@ -1,20 +1,23 @@
 Package: G4SNVHunter
 Type: Package
 Title: Evaluating SNV-Induced Disruption of G-Quadruplex Structures
-Version: 1.1.0
-Authors@R: person("Rongxin", "Zhang", email = "rongxinzhang@outlook.com", 
-           role = c("cre", "aut"),
-           comment = c('ORCID' = "0000-0002-1643-1185"))
+Version: 1.1.1
+Authors@R: person(given = "Rongxin", 
+                  family = "Zhang", 
+                  email = "rongxinzhang@outlook.com", 
+                  role = c("cre", "aut"),
+                  comment = c('ORCID' = "0000-0002-1643-1185"))
 Description: 
     G-quadruplexes (G4s) are unique nucleic acid secondary structures 
     predominantly found in guanine-rich regions and have been shown to be 
-    involved in various biological regulatory processes. G4SNVHunter is an R 
-    package designed to rapidly identify genomic sequences with G4-forming 
-    potential and accurately screen user-provided single nucleotide variants 
-    (also applicable to single nucleotide polymorphisms) that may destabilize 
-    these structures. This enables users to screen key variants for further 
-    experimental study, investigating how these variants may influence 
-    biological functions, such as gene regulation, by altering G4 formation.
+    involved in various biological regulatory processes. 
+    G4SNVHunter is an R package designed to rapidly identify genomic sequences 
+    with G4-forming propensity and to accurately screen user-provided 
+    single nucleotide variants—as well as other small-scale variants such as 
+    indels and MNVs—for their potential to destabilize these structures.
+    This allows researchers to then screen these critical variants for deeper 
+    study, digging into how they might influence biological functions—think 
+    gene regulation, for instance—by impairing G4 formation propensity.
 Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.3.0)
@@ -33,7 +36,15 @@ Imports:
     progress,
     ggseqlogo,
     viridis,
-    ggpointdensity
+    ggpointdensity,
+    tools,
+    SummarizedExperiment,
+    VariantAnnotation,
+    dplyr,
+    openxlsx,
+    tidyr,
+    magrittr,
+    ggdensity
 LinkingTo: Rcpp
 RoxygenNote: 7.3.2
 License: MIT + file LICENSE

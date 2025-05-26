@@ -1,9 +1,11 @@
 #' Check the validity of SNVs
 #'
-#' This function checks whether the user-provided SNVs (or SNPs) are single
+#' This function is deprecated and will be removed in a future version.
+#'
+#' This function checks whether the user-provided SNVs are single
 #' nucleotide substitutions.
 #'
-#' @param snv_gr A \code{GRanges} object containing SNV (or SNP) data.
+#' @param snv_gr A \code{GRanges} object containing SNV data.
 #' @param mode A character string specifying the checks to be performed.
 #' \code{w} for checking if all widths (w) are 1,
 #' \code{r} for checking if all ref (r) values are A, T, C, or G,
@@ -13,7 +15,7 @@
 #' @param alt_col Column name for the alt bases in \code{snv_gr}.
 #' Default is NULL.
 #'
-#' @return A logical value indicating whether the user-provided SNVs (or SNPs)
+#' @return A logical value indicating whether the user-provided SNVs
 #' passed all checks.
 #'
 #' @export
@@ -58,11 +60,14 @@
 #'
 #' # ref should be all one
 #' checkSNV(gr4, mode = "wr", ref_col = "ref")
-
+#' @section Deprecated:
+#' This function is no longer supported.
 checkSNV <- function(snv_gr = NULL,
                      mode = "wra",
                      ref_col = NULL,
                      alt_col = NULL) {
+
+  .Deprecated(msg = "checkSNV is deprecated.")
 
   if (!inherits(snv_gr, "GRanges")) {
     stop("'snv_gr' must be a GRanges object")

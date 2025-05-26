@@ -26,6 +26,9 @@ A combined plot (using \code{plot_grid}) containing two subplots:
         - Density plot of the G4Hunter score differences.
 }
 \description{
+This function is deprecated and will be removed in a future version.
+}
+\details{
 This function generates two plots for visualizing the impact of SNVs on
 G4 formation:
 1. A scatter plot with density shading comparing the original G4Hunter score
@@ -33,6 +36,12 @@ and the mutant G4Hunter score.
 2. A density plot showing the distribution of score changes between the
 original and mutant G4 sequences.
 }
+\section{Deprecated}{
+
+This function is no longer supported.
+Use \code{\link{plotVarImpact}} instead.
+}
+
 \examples{
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) {

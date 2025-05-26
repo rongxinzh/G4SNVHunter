@@ -1,5 +1,7 @@
 #' Plot the Impact of SNVs on G4Hunter Scores
 #'
+#' This function is deprecated and will be removed in a future version.
+#'
 #' This function generates two plots for visualizing the impact of SNVs on
 #' G4 formation:
 #' 1. A scatter plot with density shading comparing the original G4Hunter score
@@ -63,10 +65,15 @@
 #'
 #' res_snp <- SNVImpactG4(G4, snp_gr, alt_col = "alt")
 #' plotSNVImpact(res_snp)
-
+#' @section Deprecated:
+#' This function is no longer supported.
+#' Use \code{\link{plotVarImpact}} instead.
 plotSNVImpact <- function(gr,
                           p_colors = c("#b22d2d", "#6ca4d6",
                                        "#2d69b0", "#1f77b4")) {
+
+  .Deprecated("plotVarImpact")
+
   if (length(p_colors) != 4) {
     stop("'p_colors' must be a vector of exactly four colors.")
   }
@@ -120,6 +127,8 @@ plotSNVImpact <- function(gr,
 
 #' Visualize the variants in G4 sequence
 #'
+#' This function is deprecated and will be removed in a future version.
+#'
 #' This function plot sequence logos to visualize sequence variants caused by
 #' SNVs or SNPs, with the location of the variants highlighted by rectangles
 #' and arrows.
@@ -164,9 +173,13 @@ plotSNVImpact <- function(gr,
 #'
 #' effect <- SNVImpactG4(G4, snv_gr, alt_col = "alt")
 #' plotImpactSeq(effect, ncol = 2)
-
+#' @section Deprecated:
+#' This function is no longer supported.
+#' Use \code{\link{plotImpactedG4}} instead.
 plotImpactSeq <- function(filtered_gr,
                           ncol = 1) {
+
+  .Deprecated("plotImpactedG4")
 
   if (!inherits(filtered_gr, "GRanges")) {
     stop("'filtered_gr' must be a GRanges object")

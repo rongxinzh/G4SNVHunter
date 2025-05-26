@@ -1,38 +1,46 @@
-#' Detect G4 Sequences Using G4Hunter Algorithm
+#' Detect G4 Sequences Using the G4Hunter Algorithm
 #'
-#' This function detects G4 sequences for a given \code{DNAStringSet} object
+#' This function detects G4 sequences from a given \code{DNAStringSet} object
 #' using the G4Hunter algorithm.
 #'
-#' @param sequences A \code{DNAStringSet} object containing the sequences to be
-#' analyzed.
+#' @param sequences A \code{DNAStringSet} object containing the input sequences
+#' to be analyzed.
 #' @param threshold A numeric value specifying the threshold for the G4Hunter
-#' score (absolute value). Default is 1.5. We do not recommend setting the
+#' score (absolute value). Default is 1.5. It is not recommended to set the
 #' threshold below 1.2.
-#' @param window_size An integer specifying the window size (bp) for
+#' @param window_size An integer specifying the window size (bp) used for
 #' prediction. Default is 25. Another commonly used window size is 20.
-#' However, 25 is generally preferred unless otherwise required.
+#' However, 25 is generally preferred.
 #' @param include_sequences A logical value (\code{TRUE}/\code{FALSE})
 #' indicating whether to include the predicted G4 sequences in the output.
 #' Default is \code{TRUE}. Setting this parameter to \code{FALSE} can reduce
-#' the memory overhead of the final output, which may be useful for extremely
-#' large genomes. However, we strongly recommend retaining the sequence
-#' information in the output, as it is indispensable for subsequent analysis of
-#' the impact of variants on G4 formation.
-#' @param strands A character string (\code{"b"} for both strands and
-#' \code{"p"} for positive strand only) indicating which strand to be
-#' considered. Default is \code{"b"}.
+#' memory usage, which may be beneficial for extremely large genomes. However,
+#' we strongly recommend retaining the sequence information in the output, as
+#' it is indispensable for subsequent analysis of the impact of variants on
+#' G4 formation.
+#' @param strands A character string specifying which strand(s) to consider:
+#' \code{"b"} for both strands or \code{"p"} for the positive strand only.
+#' Default is \code{"b"}.
 #'
 #' @return A \code{GRanges} object containing the predicted G4 sequences.
-#' The GRanges object includes the following metadata columns:
+#' The \code{GRanges} object includes the following metadata columns:
 #' \describe{
-#'   \item{\code{score}}{The actual G4Hunter score for the G4 sequence detected
-#'   (after merging, pruning, etc.).}
-#'   \item{\code{max_score}}{The maximum G4Hunter score for the window covering
-#'   this G4.}
-#'   \item{\code{sequence}}{The G4 sequence after merging, pruning, etc.}
+#'   \item{\code{score}}{The final G4Hunter score of the predicted G4 sequence
+#'   after merging and pruning.}
+#'   \item{\code{max_score}}{The maximum G4Hunter score observed across all
+#'   sliding windows covering the G4.}
+#'   \item{\code{sequence}}{The sequence of the predicted G4 (if
+#'   \code{include_sequences = TRUE}).}
 #' }
-#' If no G4 sequences were detected, it will return an empty \code{GRanges}
-#' object.
+#' Additionally, the following parameters used during detection are stored
+#' in the \code{metadata()} of the returned \code{GRanges} object:
+#' \describe{
+#'   \item{\code{threshold}}{The G4Hunter score threshold used.}
+#'   \item{\code{window_size}}{The window size used.}
+#'   \item{\code{include_sequences}}{Whether sequences were included.}
+#'   \item{\code{strands}}{The strand(s) considered.}
+#' }
+#' If no G4 sequences are detected, an empty \code{GRanges} object is returned.
 #'
 #' @seealso \code{\link{loadSequence}} for loading genome sequences into a
 #' \code{DNAStringSet} object.
@@ -70,21 +78,19 @@
 #' seq_path <- system.file("extdata", "seq.txt", package = "G4SNVHunter")
 #' G4s <- G4HunterDetect(loadSequence(seq_path = seq_path))
 #' print(G4s)
-
 G4HunterDetect <- function(sequences = NULL,
                            threshold = 1.5,
                            window_size = 25,
                            include_sequences = TRUE,
                            strands = "b") {
 
-  if (!inherits(sequences, "DNAStringSet")) {
-    stop("'sequences' must be a DNAStringSet object.")
-  }
+  validateG4HunterDetectInputs(sequences,
+                               threshold,
+                               window_size,
+                               include_sequences,
+                               strands)
 
-  if (validateG4HunterParams(threshold, window_size,
-                             include_sequences, strands)) {
-    message("Start processing...")
-  }
+  message("Start processing...")
 
   if (length(sequences) > 2) {
     pb <- progress_bar$new(
@@ -120,9 +126,16 @@ G4HunterDetect <- function(sequences = NULL,
 
   if (length(results) == 0) {
     message("No G4 sequences were found.")
+
+    G4_detected <- GRanges()
+    metadata(G4_detected)$threshold <- threshold
+    metadata(G4_detected)$window_size <- window_size
+    metadata(G4_detected)$include_sequences <- include_sequences
+    metadata(G4_detected)$strands <- strands
+
     message("Done!")
 
-    return(GRanges())
+    return(G4_detected)
   } else {
     message("Merging predicted G4s...")
     seqlevels_union <- Reduce(union, lapply(results, seqlevels))
@@ -131,6 +144,12 @@ G4HunterDetect <- function(sequences = NULL,
       gr
     })
     G4_detected <- do.call(c, results)
+
+    metadata(G4_detected)$threshold <- threshold
+    metadata(G4_detected)$window_size <- window_size
+    metadata(G4_detected)$include_sequences <- include_sequences
+    metadata(G4_detected)$strands <- strands
+
     message("Done!")
 
     return(G4_detected)

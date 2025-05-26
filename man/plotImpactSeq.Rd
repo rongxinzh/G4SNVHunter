@@ -20,10 +20,19 @@ A plot that displays the grid of sequence logos, showing the
 differences between the original and mutated sequences.
 }
 \description{
+This function is deprecated and will be removed in a future version.
+}
+\details{
 This function plot sequence logos to visualize sequence variants caused by
 SNVs or SNPs, with the location of the variants highlighted by rectangles
 and arrows.
 }
+\section{Deprecated}{
+
+This function is no longer supported.
+Use \code{\link{plotImpactedG4}} instead.
+}
+
 \examples{
 
 if (!requireNamespace("GenomicRanges", quietly = TRUE)) {

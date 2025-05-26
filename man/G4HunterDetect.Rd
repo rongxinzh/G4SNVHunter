@@ -2,7 +2,7 @@
 % Please edit documentation in R/G4Hunter.R
 \name{G4HunterDetect}
 \alias{G4HunterDetect}
-\title{Detect G4 Sequences Using G4Hunter Algorithm}
+\title{Detect G4 Sequences Using the G4Hunter Algorithm}
 \usage{
 G4HunterDetect(
   sequences = NULL,
@@ -13,44 +13,52 @@ G4HunterDetect(
 )
 }
 \arguments{
-\item{sequences}{A \code{DNAStringSet} object containing the sequences to be
-analyzed.}
+\item{sequences}{A \code{DNAStringSet} object containing the input sequences
+to be analyzed.}
 
 \item{threshold}{A numeric value specifying the threshold for the G4Hunter
-score (absolute value). Default is 1.5. We do not recommend setting the
+score (absolute value). Default is 1.5. It is not recommended to set the
 threshold below 1.2.}
 
-\item{window_size}{An integer specifying the window size (bp) for
+\item{window_size}{An integer specifying the window size (bp) used for
 prediction. Default is 25. Another commonly used window size is 20.
-However, 25 is generally preferred unless otherwise required.}
+However, 25 is generally preferred.}
 
 \item{include_sequences}{A logical value (\code{TRUE}/\code{FALSE})
 indicating whether to include the predicted G4 sequences in the output.
 Default is \code{TRUE}. Setting this parameter to \code{FALSE} can reduce
-the memory overhead of the final output, which may be useful for extremely
-large genomes. However, we strongly recommend retaining the sequence
-information in the output, as it is indispensable for subsequent analysis of
-the impact of variants on G4 formation.}
+memory usage, which may be beneficial for extremely large genomes. However,
+we strongly recommend retaining the sequence information in the output, as
+it is indispensable for subsequent analysis of the impact of variants on
+G4 formation.}
 
-\item{strands}{A character string (\code{"b"} for both strands and
-\code{"p"} for positive strand only) indicating which strand to be
-considered. Default is \code{"b"}.}
+\item{strands}{A character string specifying which strand(s) to consider:
+\code{"b"} for both strands or \code{"p"} for the positive strand only.
+Default is \code{"b"}.}
 }
 \value{
 A \code{GRanges} object containing the predicted G4 sequences.
-The GRanges object includes the following metadata columns:
+The \code{GRanges} object includes the following metadata columns:
 \describe{
-  \item{\code{score}}{The actual G4Hunter score for the G4 sequence detected
-  (after merging, pruning, etc.).}
-  \item{\code{max_score}}{The maximum G4Hunter score for the window covering
-  this G4.}
-  \item{\code{sequence}}{The G4 sequence after merging, pruning, etc.}
+  \item{\code{score}}{The final G4Hunter score of the predicted G4 sequence
+  after merging and pruning.}
+  \item{\code{max_score}}{The maximum G4Hunter score observed across all
+  sliding windows covering the G4.}
+  \item{\code{sequence}}{The sequence of the predicted G4 (if
+  \code{include_sequences = TRUE}).}
 }
-If no G4 sequences were detected, it will return an empty \code{GRanges}
-object.
+Additionally, the following parameters used during detection are stored
+in the \code{metadata()} of the returned \code{GRanges} object:
+\describe{
+  \item{\code{threshold}}{The G4Hunter score threshold used.}
+  \item{\code{window_size}}{The window size used.}
+  \item{\code{include_sequences}}{Whether sequences were included.}
+  \item{\code{strands}}{The strand(s) considered.}
+}
+If no G4 sequences are detected, an empty \code{GRanges} object is returned.
 }
 \description{
-This function detects G4 sequences for a given \code{DNAStringSet} object
+This function detects G4 sequences from a given \code{DNAStringSet} object
 using the G4Hunter algorithm.
 }
 \examples{

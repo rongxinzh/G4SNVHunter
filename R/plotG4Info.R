@@ -21,12 +21,12 @@
 #'   \item \code{max_score}: Numeric vector of maximum scores for G4 sequences.
 #'   \item \code{sequence}: Character vector of G4 sequence strings.
 #' }
-#' The GRanges object must also have a \code{strand} information.
-#' Whenever possible, it should come from the results returned by the
+#' The GRanges object must include \code{strand} information.
+#' It should come from the results returned by the
 #' \code{G4HunterDetect} function.
 #'
-#' @param p_colors A vector of colors to be used for the plots.
-#' It should contain nine color values for the different plot elements.
+#' @param p_colors A vector of colors to be used for the plots. It should
+#' contain nine color values corresponding to the different plot elements.
 #'
 #' @return A combined plot displays all the generated plots arranged in a
 #' grid layout.
@@ -44,7 +44,6 @@
 #' seq_path <- system.file("extdata", "seq.txt", package = "G4SNVHunter")
 #' G4 <- G4HunterDetect(loadSequence(seq_path = seq_path))
 #' plotG4Info(G4)
-
 plotG4Info <- function(G4,
                        p_colors = c("#6B9ECC", "#D91117", "#0E619C",
                                     "#58AC7B", "#D91117", "#0E619C",

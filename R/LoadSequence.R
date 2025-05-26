@@ -1,6 +1,6 @@
 #' Load Genome Sequences
 #'
-#' This function loads genomic sequences from various sources, including a
+#' This function loads genomic sequences from multiple sources, including a
 #' FASTA file, a text file with sequence identifiers and corresponding
 #' sequences, or a data frame object.
 #'
@@ -37,7 +37,6 @@
 #' )
 #' seq <- loadSequence(genome_seq = seq_df)
 #' print(seq)
-
 loadSequence <- function(genome_seq = NULL, seq_path = NULL) {
   if (!is.null(genome_seq) && !is.null(seq_path)) {
     stop("Both 'genome_seq' and 'seq_path' cannot be provided ",

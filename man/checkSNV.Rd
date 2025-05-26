@@ -7,7 +7,7 @@
 checkSNV(snv_gr = NULL, mode = "wra", ref_col = NULL, alt_col = NULL)
 }
 \arguments{
-\item{snv_gr}{A \code{GRanges} object containing SNV (or SNP) data.}
+\item{snv_gr}{A \code{GRanges} object containing SNV data.}
 
 \item{mode}{A character string specifying the checks to be performed.
 \code{w} for checking if all widths (w) are 1,
@@ -21,13 +21,21 @@ Default is NULL.}
 Default is NULL.}
 }
 \value{
-A logical value indicating whether the user-provided SNVs (or SNPs)
+A logical value indicating whether the user-provided SNVs
 passed all checks.
 }
 \description{
-This function checks whether the user-provided SNVs (or SNPs) are single
+This function is deprecated and will be removed in a future version.
+}
+\details{
+This function checks whether the user-provided SNVs are single
 nucleotide substitutions.
 }
+\section{Deprecated}{
+
+This function is no longer supported.
+}
+
 \examples{
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) {

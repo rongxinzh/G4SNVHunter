@@ -19,7 +19,7 @@ provided). Ignored if \code{genome_seq} is provided.}
 A \code{DNAStringSet} object containing the genome sequences.
 }
 \description{
-This function loads genomic sequences from various sources, including a
+This function loads genomic sequences from multiple sources, including a
 FASTA file, a text file with sequence identifiers and corresponding
 sequences, or a data frame object.
 }

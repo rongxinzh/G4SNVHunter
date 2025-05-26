@@ -1,10 +1,12 @@
 #' Evaluate the Impact of SNVs on G4 Sequences
 #'
+#' This function is deprecated and will be removed in a future version.
+#'
 #' This function evaluates the impact of SNVs on G4 formation.
 #'
 #' @param G4 A \code{GRanges} object representing the G4 regions. This object
 #' must include metadata columns for G4 sequence and G4Hunter scores.
-#' Whenever possible, it should come from the results returned by the
+#' It should come from the results returned by the
 #' \code{G4HunterDetect} function.
 #' @param snvs A \code{GRanges} object representing the SNVs. This object must
 #' include metadata columns for SNV alternative alleles and, optionally,
@@ -135,13 +137,17 @@
 #'   mode = "m", sampleid_col = "sampleid", snvid_col = "snv_id"
 #' )
 #' print(res_snv)
-
+#' @section Deprecated:
+#' This function is no longer supported.
+#' Use \code{\link{G4VarImpact}} instead.
 SNVImpactG4 <- function(G4 = NULL,
                         snvs = NULL,
                         alt_col = "alt",
                         mode = "s",
                         sampleid_col = NULL,
                         snvid_col = NULL) {
+
+  .Deprecated("G4VarImpact")
 
   if (is.null(G4) || !inherits(G4, "GRanges") || length(G4) == 0) {
     stop("'G4' must be a non-null, non-empty GRanges object.")
@@ -291,10 +297,12 @@ SNVImpactG4 <- function(G4 = NULL,
 
 #' Filter SNV Impact GRanges Object Based on User-Defined Thresholds
 #'
+#' This function is deprecated and will be removed in a future version.
+#'
 #' This function filters the SNV Impact \code{GRanges} object returned by the
 #' \code{SNVImpactG4} function based on user-defined thresholds for the
 #' \code{G4.info.score}, \code{mut.score}, and \code{score.diff} parameters.
-#' This function filters SNVs that may significantly impact the formation of G4
+#' This function filters SNVs that may significantly impair the formation of G4
 #' structures using customizable filtering criteria. You are not required to
 #' specify all three threshold parameters. However, at least one threshold
 #' parameter must be provided.
@@ -354,11 +362,15 @@ SNVImpactG4 <- function(G4 = NULL,
 #'   score_diff_threshold = -0.2
 #' )
 #' print(filtered_snv_eff)
-
+#' @section Deprecated:
+#' This function is no longer supported.
+#' Use \code{\link{filterVarImpact}} instead.
 filterSNVImpact <- function(gr,
                             raw_score_threshold = NULL,
                             mut_score_threshold = NULL,
                             score_diff_threshold = NULL) {
+
+  .Deprecated("filterVarImpact")
 
   if (!inherits(gr, "GRanges")) {
     stop("The input object 'gr' must be a GRanges object.")
@@ -381,26 +393,23 @@ filterSNVImpact <- function(gr,
       (!is.numeric(raw_score_threshold) ||
        raw_score_threshold < 0 ||
        raw_score_threshold > 4)) {
-    stop("'raw_score_threshold' must be a positive numeric value ",
-         "no greater than 4.")
+    stop("'raw_score_threshold' must be a numeric value between 0 and 4.")
   }
 
   if (!is.null(mut_score_threshold) &&
       (!is.numeric(mut_score_threshold) ||
        mut_score_threshold < 0 ||
        mut_score_threshold > 4)) {
-    stop("'mut_score_threshold' must be a positive numeric value ",
-         "no greater than 4.")
+    stop("'mut_score_threshold' must be a numeric value between 0 and 4.")
   }
 
   if (!is.null(score_diff_threshold) &&
       (!is.numeric(score_diff_threshold) ||
        score_diff_threshold >= 0 ||
        score_diff_threshold < -4)) {
-    stop("'score_diff_threshold' must be a negative numeric value ",
-         "no less than -4.")
+    stop("'score_diff_threshold' must be a numeric value between -4 and 0.")
   }
-  
+
   if (!is.null(raw_score_threshold)) {
     gr <- gr[abs(gr$G4.info.score) >= raw_score_threshold]
   }

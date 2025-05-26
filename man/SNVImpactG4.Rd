@@ -16,7 +16,7 @@ SNVImpactG4(
 \arguments{
 \item{G4}{A \code{GRanges} object representing the G4 regions. This object
 must include metadata columns for G4 sequence and G4Hunter scores.
-Whenever possible, it should come from the results returned by the
+It should come from the results returned by the
 \code{G4HunterDetect} function.}
 
 \item{snvs}{A \code{GRanges} object representing the SNVs. This object must
@@ -94,8 +94,17 @@ A \code{GRanges} object depending on the \code{mode} parameter:
 }
 }
 \description{
+This function is deprecated and will be removed in a future version.
+}
+\details{
 This function evaluates the impact of SNVs on G4 formation.
 }
+\section{Deprecated}{
+
+This function is no longer supported.
+Use \code{\link{G4VarImpact}} instead.
+}
+
 \examples{
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) {

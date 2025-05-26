@@ -18,12 +18,12 @@ at least the following metadata columns:
   \item \code{max_score}: Numeric vector of maximum scores for G4 sequences.
   \item \code{sequence}: Character vector of G4 sequence strings.
 }
-The GRanges object must also have a \code{strand} information.
-Whenever possible, it should come from the results returned by the
+The GRanges object must include \code{strand} information.
+It should come from the results returned by the
 \code{G4HunterDetect} function.}
 
-\item{p_colors}{A vector of colors to be used for the plots.
-It should contain nine color values for the different plot elements.}
+\item{p_colors}{A vector of colors to be used for the plots. It should
+contain nine color values corresponding to the different plot elements.}
 }
 \value{
 A combined plot displays all the generated plots arranged in a

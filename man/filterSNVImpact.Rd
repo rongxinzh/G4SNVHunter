@@ -35,14 +35,23 @@ A filtered \code{GRanges} object, containing only the records that
 meet the specified threshold criteria.
 }
 \description{
+This function is deprecated and will be removed in a future version.
+}
+\details{
 This function filters the SNV Impact \code{GRanges} object returned by the
 \code{SNVImpactG4} function based on user-defined thresholds for the
 \code{G4.info.score}, \code{mut.score}, and \code{score.diff} parameters.
-This function filters SNVs that may significantly impact the formation of G4
+This function filters SNVs that may significantly impair the formation of G4
 structures using customizable filtering criteria. You are not required to
 specify all three threshold parameters. However, at least one threshold
 parameter must be provided.
 }
+\section{Deprecated}{
+
+This function is no longer supported.
+Use \code{\link{filterVarImpact}} instead.
+}
+
 \examples{
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) {

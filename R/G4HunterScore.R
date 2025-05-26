@@ -26,7 +26,6 @@
 #' sequence <- "GGGTAAGGGATGGGTCGGG"
 #' score <- G4HunterScore(sequence)
 #' print(score)
-
 G4HunterScore <- function(seq = NULL) {
   if (!is.character(seq) || length(seq) != 1) {
     stop("'seq' must be a single string.")
