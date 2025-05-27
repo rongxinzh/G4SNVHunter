@@ -56,3 +56,7 @@ CHANGES IN VERSION 1.1.1
 CHANGES IN VERSION 1.1.2
 ------------------------
 - Tweaked the vignette
+
+CHANGES IN VERSION 1.1.3
+------------------------
+- Remove .o files
