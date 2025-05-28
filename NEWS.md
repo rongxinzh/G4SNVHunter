@@ -60,3 +60,7 @@ CHANGES IN VERSION 1.1.2
 CHANGES IN VERSION 1.1.3
 ------------------------
 - Remove .o files
+
+CHANGES IN VERSION 1.1.4
+------------------------
+- Attempting to resolve build issues introduced by the uniquely genius Taishan compilation environment
